@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>systeminformation</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <div>
+     <!-- <div class="box">
+      <span class="label">manufacturer</span>
+     <span id="manufacturer">-</span>
+      </div>
+       -->
+    <div class="box">
+      <span class="label">Logofile</span>
+      <span id="cpu-logofile">-</span>
+    </div>
+
+    <div class="box">
+      <span class="label">CPU (%)</span>
+      <span id="cpu">-</span>
+    </div>
+
+    <div class="box">
+      <span class="label">Free Mem (%)</span>
+      <span id="mem">-</span>
+    </div>
+
+    <div class="box">
+      <span class="label">Total Mem(GB)</span>
+      <span id="total-mem">-</span>
+    </div>
+
+    <div class="box">
+      <span class="label">processors</span>
+      <span id="cpu-processors">-</span>
+    </div>
+
+    <div class="box">
+      <span class="label">avgLoad</span>
+      <span id="cpu-avgLoad">-</span>
+    </div>
+    
+    <div class="box">
+      <span class="label">Data Recevied</span>
+      <span id="data-receive">-</span>
+    </div>
+
+  </div>
+
+  </br>
+
+<div> 
+  <div class="box">
+    <span class="label">System-Manufacturer</span>
+    <span id="manufacturer">-</span>
+  </div>
+
+    <div class="box">
+      <span class="label">CPU Speed</span>
+      <span id="cpu-speed">-</span>
+    </div>
+
+    <div class="box">
+      <span class="label">CPU Core</span>
+      <span id="cpu-cores">-</span>
+    </div>
+
+    <div class="box">
+      <span class="label">CPU manufacturer</span>
+      <span id="cpu-manufacturer">-</span>
+    </div>
+
+    <div class="box">
+      <span class="label">currentLoad</span>
+      <span id="cpu-currentLoad">-</span>
+    </div>
+
+    <div class="box">
+      <span class="label">Data Transfered </span>
+      <span id="data-transfer">-</span>
+    </div>
+    <script>
+      const electron = require('electron');
+      const ipcRenderer = electron.ipcRenderer;
+      ipcRenderer.on('cpu-logofile',(event,data) => {
+        document.getElementById('cpu-logofile').innerHTML = data;
+      });
+      ipcRenderer.on('cpu',(event,data) => {
+        document.getElementById('cpu').innerHTML = data.toFixed(2);
+      });
+      ipcRenderer.on('mem',(event,data) => {
+        document.getElementById('mem').innerHTML = data.toFixed(2);
+      });
+      ipcRenderer.on('total-mem',(event,data) => {
+        document.getElementById('total-mem').innerHTML = data.toFixed(2);
+      });
+      ipcRenderer.on('cpu-speed',(event,data) => {
+        document.getElementById('cpu-speed').innerHTML = data.toFixed(2);
+      });
+      ipcRenderer.on('cpu-processors',(event,data) => {
+        document.getElementById('cpu-processors').innerHTML = data;
+      });
+      ipcRenderer.on('cpu-cores',(event,data) => {
+        document.getElementById('cpu-cores').innerHTML = data;
+      });
+     ipcRenderer.on('cpu-manufacturer',(event,data) => {
+        document.getElementById('cpu-manufacturer').innerHTML = data;
+      });
+      // ipcRenderer.on('cpu-speedMin',(event,data) => {
+      //   document.getElementById('cpu-speedMin').innerHTML = data;
+      // });
+      ipcRenderer.on('manufacturer',(event,data) => {
+        document.getElementById('manufacturer').innerHTML = data;
+      });
+      ipcRenderer.on('cpu-currentLoad',(event,data) => {
+        document.getElementById('cpu-currentLoad').innerHTML = data.toFixed(2)
+      });
+      ipcRenderer.on('cpu-avgLoad',(event,data) => {
+        document.getElementById('cpu-avgLoad').innerHTML = data.toFixed(2)
+      });
+      ipcRenderer.on('data-receive',(event,data) => {
+        document.getElementById('data-receive').innerHTML = data
+      });
+      ipcRenderer.on('data-transfer',(event,data) => {
+        document.getElementById('data-transfer').innerHTML = data
+      });
+    </script>
+  </body>
+</html>
